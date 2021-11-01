@@ -1,0 +1,36 @@
+{
+  "name": "git-dag",
+  "version": "0.1.1",
+  "description": "Show Git objects as a DAG",
+  "license": "MIT",
+  "author": {
+    "name": "Leo Deng"
+  },
+  "keywords": [
+    "git-dag"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "commander": "^8.3.0",
+    "express": "^4.17.1",
+    "open": "^8.4.0",
+    "simple-git": "^2.47.0"
+  },
+  "main": "./bin/git-dag",
+  "bin": {
+    "git-dag": "./bin/git-dag"
+  },
+  "directories": {
+    "bin": "./bin"
+  },
+  "homepage": "https://github.com/myst729/git-dag",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/myst729/git-dag.git"
+  },
+  "bugs": {
+    "url": "https://github.com/myst729/git-dag/issues"
+  }
+}

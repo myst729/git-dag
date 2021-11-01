@@ -1,0 +1,43 @@
+#!/usr/bin/env node
+
+const fs = require('fs')
+const path = require('path')
+const { program } = require('commander')
+const express = require('express')
+const open = require('open')
+const { version } = require('../package')
+
+const gitDag = require('../lib/index')
+
+const startDaemon = (dotGitRoot) => {
+  const app = express()
+
+  app.use('/', express.static(path.join(__dirname, '../static')))
+
+  app.get('/dag', async (req, res) => {
+    const commitsOnly = typeof req.query.scoped !== 'undefined'
+    const dagData = await gitDag(dotGitRoot, commitsOnly)
+    res.send(dagData)
+  })
+
+  app.listen(9140, () => {
+    open(`http://localhost:9140`)
+  })
+}
+
+program
+  .version(version, '-v, --version', 'output the current version')
+  .usage('[repo] [options]')
+  .argument('[repo]', 'path to the git repository')
+  .action((repo, options) => {
+    const cwd = path.resolve(repo || process.cwd())
+    const dotGitRoot = path.join(cwd, '.git')
+    fs.stat(dotGitRoot, (err, stats) => {
+      if (err || !stats.isDirectory()) {
+        console.warn('[ERROR] not a git repository')
+      } else {
+        startDaemon(dotGitRoot)
+      }
+    })
+  })
+  .parse(process.argv)

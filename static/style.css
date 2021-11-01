@@ -1,0 +1,36 @@
+body {
+  font-family: Helvetica Neue, Helvetica;
+  font-size: 14px;
+}
+
+h1 {
+  color: #333;
+}
+
+#toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 1200px;
+}
+
+label {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.legends span {
+  font-weight: bold;
+  border: 1px solid rgba(0, 0, 0, .4);
+  border-radius: 5px;
+  color: #222;
+  display: inline-block;
+  padding: 4px 7px;
+  margin-left: 10px;
+}
+
+#cy {
+  height: 750px;
+  width: 1200px;
+  border: 1px solid;
+}
