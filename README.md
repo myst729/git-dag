@@ -2,6 +2,12 @@
 
 Show all Git objects in a repository as a DAG.
 
+## Installation
+
+```bash
+npm install -g git-dag
+```
+
 ## How to use
 
 ```bash
